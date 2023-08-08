@@ -69,7 +69,17 @@ class Main extends React.Component {
     </div>
 </article>`
 
+        let resultJson = `{
+            title: "${title}",
+            subtitle: "",
+            author: "${author}",
+            author_contact: "", // I personally dunno why does it even exists...
+            publish_date: "${date}",
+            image_source: "${url}",
+            post_destination: "/Posts/[FILE NAME]"
+        },`
         document.getElementById("result").value = result;
+        document.getElementById("result-json").value = resultJson;
     }
     addRef() {
         this.setState({ references: this.state.references + 1 });
@@ -121,7 +131,8 @@ class Main extends React.Component {
                 </div>
                 <hr />
                 <button onClick={this.submit}>Submit</button>
-                <textarea id="result" value="e"></textarea>
+                <textarea id="result" value="html"></textarea>
+                <textarea id="result-json" value="json"></textarea>
             </div>
         )
     }
