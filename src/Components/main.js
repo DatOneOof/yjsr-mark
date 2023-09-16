@@ -34,7 +34,7 @@ class Main extends React.Component {
     <h1>${title}</h1> 
                             <span class="meta">
                                 Posted by 
-                                <a href="">${author}</a>on ${date}
+                                <a href="">${author}</a> on ${date}
                             </span>
                         </div>
                     </div>
@@ -50,8 +50,14 @@ class Main extends React.Component {
 
 
         for (let i = 0; i < body.children.length; i++) {
-            let e = body.children[i];
-            result = result + `\n                    <${e.className}>${e.value}</${e.className}>`
+            let e = body.children[i].children[1];
+            if(e.className === "img"){
+                result = result + `\n                    <img src="../assets/others/${e.value}" class="illus-img">`
+            }
+            else{
+                result = result + `\n                    <${e.className}>${e.value}</${e.className}>`
+            }
+            
         }
 
         if(refs.children.length != 0){
@@ -104,7 +110,14 @@ class Main extends React.Component {
                 <h2>Body</h2>
                 <div id="elms" className="sep">
                     {this.state.body.map((e) => {
-                        return (<input className={e.type} placeholder={e.type}></input>)
+                        if(e.type === "img"){
+                            return(<div><p>{e.type}</p> <input className={e.type} placeholder={"filename"}></input></div>)
+                        }
+                        if(e.type === "ol"){}
+                        else{
+                            return (<div><p>{e.type}</p> <input className={e.type} placeholder={e.type}></input></div>)
+                        }
+                        
                     })}
                 </div>
                 <div id="add-elm">
@@ -114,6 +127,9 @@ class Main extends React.Component {
                         <option value="p">p</option>
                         <option value="h2">h2</option>
                         <option value="h3">h3</option>
+                        <option value="img">image</option>
+                        {/*<option value="ul">unordered list</option>
+                        <option value="ol">ordered list</option>*/}
                     </select>
                     <button id="delete-elm" onClick={this.deleteField}>Delete</button>
                 </div>
