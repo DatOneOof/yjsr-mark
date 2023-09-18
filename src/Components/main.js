@@ -54,6 +54,9 @@ class Main extends React.Component {
             if(e.className === "img"){
                 result = result + `\n                    <img src="../assets/others/${e.value}" class="illus-img">`
             }
+            if(e.className === "img-cap"){
+                result = result + `\n                    <p class="img-cap">${e.value}</p}>`
+            }
             else{
                 result = result + `\n                    <${e.className}>${e.value}</${e.className}>`
             }
@@ -113,7 +116,12 @@ class Main extends React.Component {
                         if(e.type === "img"){
                             return(<div><p>{e.type}</p> <input className={e.type} placeholder={"filename"}></input></div>)
                         }
-                        if(e.type === "ol"){}
+                        if(e.type === "img-cap"){
+                            return(<div><p>Image caption</p> <input className={e.type} placeholder={e.type}></input></div>)
+                        }
+                        if(e.type === "ol"){
+                            return(<div></div>)
+                        }
                         else{
                             return (<div><p>{e.type}</p> <input className={e.type} placeholder={e.type}></input></div>)
                         }
@@ -128,6 +136,7 @@ class Main extends React.Component {
                         <option value="h2">h2</option>
                         <option value="h3">h3</option>
                         <option value="img">image</option>
+                        <option value="img-cap">image caption</option>
                         {/*<option value="ul">unordered list</option>
                         <option value="ol">ordered list</option>*/}
                     </select>
