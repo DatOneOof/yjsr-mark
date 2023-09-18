@@ -55,7 +55,7 @@ class Main extends React.Component {
                 result = result + `\n                    <img src="../assets/others/${e.value}" class="illus-img">`
             }
             if(e.className === "img-cap"){
-                result = result + `\n                    <p class="img-cap">${e.value}</p}>`
+                result = result + `\n                    <p class="img-cap">${e.value}</p>`
             }
             else{
                 result = result + `\n                    <${e.className}>${e.value}</${e.className}>`
